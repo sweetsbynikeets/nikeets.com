@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweets by Nikeets | Cookies · Cakes · Ice Cream</title>
+<meta name="description" content="Sweets by Nikeets — handcrafted seasonal cookies, cakes, and ice cream made to order with love.">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SWEETS BY NIKEETS — index.html
+   To update your Formspree endpoint, search for:
+   FORMSPREE_ENDPOINT and replace the URL.
+   ============================================================ */
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* ── BRAND COLORS (edit here to update site-wide) ── */
+  --blush-light:#FFE6EC;
+  --blush-mid:#FFC1D6;
+  --blush-pink:#FF6B9D;
+  --strawberry:#FF3B5C;
+  --cream:#FFF8FA;
+  --white:#FFFFFF;
+  --text-dark:#3D1A24;
+  --text-mid:#8B4A60;
+  --text-light:#C48A9F;
+}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,248,250,0.96);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--blush-mid);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo-wrap{display:flex;flex-direction:column;line-height:1.15}
+.nav-logo-main{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--strawberry)}
+.nav-logo-sub{font-family:'Quicksand',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.18em;color:var(--text-mid);text-transform:uppercase}
+.nav-logo-tag{font-family:'Dancing Script',cursive;font-size:0.85rem;color:var(--blush-pink)}
+.nav-links{display:flex;gap:0.3rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-mid);font-size:0.8rem;font-weight:600;font-family:'Quicksand',sans-serif;letter-spacing:0.05em;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:50px;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--strawberry);background:var(--blush-light)}
+
+/* ── PAGES ── */
+.page{display:none;min-height:calc(100vh - 72px)}
+.page.active{display:block}
+
+/* ── HERO ── */
+.hero{position:relative;background:linear-gradient(160deg,#FFF0F4 0%,#FFE6EC 40%,#FFF5F0 100%);padding:5rem 2rem 4rem;text-align:center;overflow:hidden}
+.hero-deco{position:absolute;pointer-events:none}
+.hero-deco.a{font-size:12rem;opacity:0.04;top:-2rem;right:-1rem;transform:rotate(15deg)}
+.hero-deco.b{font-size:7rem;opacity:0.05;bottom:1rem;left:-0.5rem;transform:rotate(-10deg)}
+.hero-deco.c{font-size:1.5rem;opacity:0.3;top:15%;left:10%}
+.hero-deco.d{font-size:1.2rem;opacity:0.25;top:25%;right:12%}
+.hero-eyebrow{font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blush-pink);margin-bottom:0.6rem}
+.hero-logo{font-family:'Dancing Script',cursive;font-size:clamp(3rem,8vw,5.5rem);color:var(--strawberry);line-height:1;margin-bottom:0.2rem;text-shadow:2px 3px 0 rgba(255,59,92,0.12)}
+.hero-byline{font-family:'Quicksand',sans-serif;font-size:clamp(0.9rem,2vw,1.1rem);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-mid);margin-bottom:0.3rem}
+.hero-cats{font-family:'Quicksand',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.15em;color:var(--text-light);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:0.6rem}
+.hero-cats span{color:var(--blush-pink)}
+.hero-quote{font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--strawberry);margin-bottom:2rem;opacity:0.85}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── BUTTONS ── */
+.btn-primary{background:var(--strawberry);color:#fff;border:none;padding:0.85rem 2rem;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.22s;font-family:'Quicksand',sans-serif;letter-spacing:0.05em;box-shadow:0 4px 14px rgba(255,59,92,0.3)}
+.btn-primary:hover{background:#e02a4e;transform:translateY(-2px);box-shadow:0 6px 18px rgba(255,59,92,0.38)}
+.btn-outline{background:transparent;color:var(--strawberry);border:2px solid var(--blush-pink);padding:0.83rem 2rem;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.22s;font-family:'Quicksand',sans-serif;letter-spacing:0.05em}
+.btn-outline:hover{background:var(--blush-light);transform:translateY(-2px)}
+
+/* ── PATTERN DIVIDER ── */
+.pattern-div{height:32px;background:repeating-linear-gradient(45deg,var(--blush-light) 0,var(--blush-light) 10px,var(--white) 10px,var(--white) 20px);opacity:0.5}
+
+/* ── SLIDESHOW ── */
+.slideshow-section{padding:3rem 2rem 1.5rem;max-width:880px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:1.6rem}
+.section-head h2{font-family:'Dancing Script',cursive;font-size:2.2rem;color:var(--text-dark);margin-bottom:0.2rem}
+.section-head p{color:var(--text-light);font-size:0.88rem;font-weight:300}
+.slideshow-wrap{position:relative;border-radius:24px;overflow:hidden;background:var(--blush-light);aspect-ratio:16/7;box-shadow:0 8px 32px rgba(255,59,92,0.12)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 0.75s ease;display:flex;align-items:center;justify-content:center}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide-fallback{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.9rem}
+.slide-fallback .s-emoji{font-size:4.5rem;animation:float 3.2s ease-in-out infinite}
+.slide-fallback .s-title{font-family:'Dancing Script',cursive;font-size:1.8rem;color:var(--text-dark)}
+.slide-fallback .s-desc{font-size:0.85rem;color:var(--text-mid);font-weight:300}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.slide-bg-1{background:linear-gradient(135deg,#FFD6E0,#FFB3C6)}
+.slide-bg-2{background:linear-gradient(135deg,#FFC1D6,#FFE6EC)}
+.slide-bg-3{background:linear-gradient(135deg,#FFE6EC,#FFC1D6)}
+.slide-arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 1rem;pointer-events:none}
+.arrow-btn{pointer-events:all;background:rgba(255,255,255,0.82);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;backdrop-filter:blur(6px);font-weight:700;color:var(--strawberry)}
+.arrow-btn:hover{background:#fff;transform:scale(1.08)}
+.slide-dots{display:flex;justify-content:center;gap:7px;margin-top:1.2rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blush-mid);border:none;cursor:pointer;transition:all 0.25s;padding:0}
+.dot.active{background:var(--strawberry);width:22px;border-radius:4px}
+
+/* ── SLIDESHOW IMAGE EDITOR ──
+   To update slideshow images: paste a direct image URL into the
+   boxes below the slideshow and click Apply.
+   For permanent images, replace the placeholder text in the
+   data-src attributes on each .slide div in the HTML.        */
+.slide-editor{background:#fff;border-radius:18px;border:2px dashed var(--blush-mid);padding:1.3rem 1.5rem;margin-top:1.5rem}
+.slide-editor h4{font-family:'Quicksand',sans-serif;font-size:0.78rem;font-weight:700;color:var(--text-mid);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.08em}
+.url-rows{display:grid;gap:0.65rem}
+.url-row{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap}
+.url-row label{font-family:'Quicksand',sans-serif;font-size:0.78rem;color:var(--text-light);min-width:72px;font-weight:700}
+.url-row input{flex:1;min-width:140px;padding:0.5rem 0.85rem;border:1.5px solid var(--blush-light);border-radius:8px;font-size:0.82rem;font-family:'Poppins',sans-serif;outline:none;transition:border-color 0.2s;color:var(--text-dark)}
+.url-row input:focus{border-color:var(--strawberry)}
+.url-row button{background:var(--strawberry);color:#fff;border:none;padding:0.5rem 1rem;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:'Quicksand',sans-serif}
+.url-row button:hover{background:#e02a4e}
+.editor-note{font-size:0.73rem;color:var(--text-light);margin-top:0.8rem;line-height:1.65;font-weight:300}
+
+/* ── FEATURES ── */
+.features-wrap{max-width:860px;margin:2rem auto;padding:0 2rem 1rem}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1.2rem}
+.feature-card{background:#fff;border-radius:20px;padding:1.6rem 1.2rem;text-align:center;border:1.5px solid var(--blush-light);transition:border-color 0.2s,transform 0.2s}
+.feature-card:hover{border-color:var(--blush-pink);transform:translateY(-3px)}
+.feature-icon{font-size:2.2rem;margin-bottom:0.8rem}
+.feature-card h3{font-family:'Dancing Script',cursive;font-size:1.15rem;margin-bottom:0.4rem;color:var(--text-dark)}
+.feature-card p{font-size:0.82rem;color:var(--text-light);line-height:1.65;font-weight:300}
+.strawberry-row{text-align:center;padding:1.2rem 0 0.5rem;font-size:1rem;letter-spacing:0.55rem;color:var(--blush-mid)}
+
+/* ── PORTFOLIO ── */
+.port-header{background:linear-gradient(160deg,#FFF0F4,#FFE6EC);padding:3rem 2rem 1.5rem;text-align:center}
+.port-header h2{font-family:'Dancing Script',cursive;font-size:2.4rem;color:var(--text-dark);margin-bottom:0.3rem}
+.port-header p{color:var(--text-mid);font-size:0.88rem;font-weight:300}
+.cat-nav{display:flex;justify-content:center;gap:0.7rem;padding:1.3rem 1rem;flex-wrap:wrap;background:var(--blush-light);border-bottom:1.5px solid var(--blush-mid)}
+.cat-btn{padding:0.6rem 1.4rem;border-radius:50px;border:2px solid var(--blush-mid);background:#fff;color:var(--text-mid);font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Quicksand',sans-serif;display:flex;align-items:center;gap:0.4rem}
+.cat-btn.active,.cat-btn:hover{background:var(--strawberry);color:#fff;border-color:var(--strawberry);box-shadow:0 3px 10px rgba(255,59,92,0.25)}
+.cat-page{display:none}
+.cat-page.active{display:block}
+.cat-page-header{padding:1.5rem 2rem 0.5rem;max-width:920px;margin:0 auto}
+.cat-page-header h3{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--strawberry);margin-bottom:0.1rem}
+.cat-page-header p{font-size:0.82rem;color:var(--text-light);font-weight:300}
+
+/* ── PORTFOLIO UPLOAD BAR ──
+   Paste an image URL + optional caption, hit Add Photo.
+   Photos persist while the page is open; to make them
+   permanent, host images on imgur.com and hard-code them
+   in the JS portfolioData object below.                   */
+.upload-bar{background:#fff;border:2px dashed var(--blush-mid);border-radius:16px;padding:1rem 1.5rem;max-width:880px;margin:0.8rem auto 0;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap}
+.upload-bar label{font-family:'Quicksand',sans-serif;font-size:0.78rem;color:var(--text-light);font-weight:700;white-space:nowrap}
+.upload-bar input[type="text"]{flex:1;min-width:160px;padding:0.5rem 0.85rem;border:1.5px solid var(--blush-light);border-radius:8px;font-size:0.82rem;font-family:'Poppins',sans-serif;outline:none;color:var(--text-dark);transition:border-color 0.2s}
+.upload-bar input[type="text"]:focus{border-color:var(--strawberry)}
+.upload-bar input.cap-in{max-width:150px}
+.upload-bar button{background:var(--strawberry);color:#fff;border:none;padding:0.55rem 1.1rem;border-radius:8px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:'Quicksand',sans-serif;white-space:nowrap}
+.upload-bar button:hover{background:#e02a4e}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem;padding:1.2rem 2rem 2rem;max-width:920px;margin:0 auto}
+.gallery-item{border-radius:18px;overflow:hidden;aspect-ratio:1;background:var(--blush-light);position:relative;transition:transform 0.2s;box-shadow:0 2px 10px rgba(255,107,157,0.1)}
+.gallery-item:hover{transform:scale(1.03)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}
+.caption{position:absolute;bottom:0;left:0;right:0;background:rgba(61,26,36,0.62);color:#fff;font-size:0.75rem;font-weight:600;font-family:'Quicksand',sans-serif;padding:0.4rem 0.6rem;text-align:center;backdrop-filter:blur(4px)}
+.remove-btn{position:absolute;top:6px;right:6px;background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:24px;height:24px;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s;color:var(--strawberry);font-weight:700}
+.gallery-item:hover .remove-btn{opacity:1}
+.empty-state{grid-column:1/-1;text-align:center;padding:3rem 2rem;color:var(--text-light)}
+.empty-state div{font-size:2.8rem;margin-bottom:0.8rem}
+.empty-state p{font-size:0.88rem;font-weight:300}
+
+/* ── MENU ── */
+.menu-header{background:linear-gradient(160deg,#FFF0F4,#FFE6EC);padding:3rem 2rem 2rem;text-align:center}
+.menu-header h2{font-family:'Dancing Script',cursive;font-size:2.4rem;color:var(--text-dark);margin-bottom:0.3rem}
+.menu-header p{color:var(--text-mid);font-size:0.88rem;font-weight:300;max-width:480px;margin:0 auto}
+.menu-body{max-width:780px;margin:2rem auto;padding:0 2rem 3rem}
+.menu-cat{margin-bottom:2.5rem}
+.menu-cat-title{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--strawberry);margin-bottom:0.2rem;display:flex;align-items:center;gap:0.5rem}
+.menu-div{height:1.5px;background:linear-gradient(to right,var(--blush-mid),transparent);margin-bottom:1.2rem}
+.menu-items-list{display:grid;gap:0.9rem}
+.menu-item{background:#fff;border-radius:16px;padding:1.1rem 1.3rem;display:flex;align-items:center;gap:1rem;border:1.5px solid var(--blush-light);transition:all 0.2s;box-shadow:0 2px 8px rgba(255,107,157,0.07)}
+.menu-item:hover{border-color:var(--blush-pink);box-shadow:0 4px 16px rgba(255,59,92,0.1)}
+.item-em{font-size:1.8rem;flex-shrink:0}
+.item-info h4{font-family:'Quicksand',sans-serif;font-weight:700;font-size:0.98rem;color:var(--text-dark);margin-bottom:0.1rem}
+.item-info p{font-size:0.81rem;color:var(--text-light);line-height:1.5;font-weight:300}
+.inq-badge{margin-left:auto;font-size:0.7rem;color:var(--strawberry);background:var(--blush-light);border:1.5px solid var(--blush-mid);padding:0.26rem 0.75rem;border-radius:50px;white-space:nowrap;flex-shrink:0;font-weight:700;font-family:'Quicksand',sans-serif}
+.seasonal-tag{display:inline-block;font-size:0.65rem;background:var(--strawberry);color:#fff;padding:0.1rem 0.5rem;border-radius:50px;margin-left:0.4rem;font-weight:700;font-family:'Quicksand',sans-serif;vertical-align:middle}
+
+/* ── ORDER FORM ── */
+.order-header{background:linear-gradient(160deg,#FFF0F4,#FFE6EC);padding:3rem 2rem 2rem;text-align:center}
+.order-header h2{font-family:'Dancing Script',cursive;font-size:2.4rem;color:var(--text-dark);margin-bottom:0.3rem}
+.order-header p{color:var(--text-mid);font-size:0.88rem;font-weight:300;max-width:460px;margin:0 auto}
+.order-body{max-width:620px;margin:2rem auto;padding:0 2rem 3rem}
+.form-card{background:#fff;border-radius:22px;padding:2.2rem;border:1.5px solid var(--blush-light);box-shadow:0 4px 20px rgba(255,107,157,0.08)}
+.form-row{margin-bottom:1.25rem}
+.form-row label{display:block;font-family:'Quicksand',sans-serif;font-size:0.72rem;font-weight:700;color:var(--text-mid);margin-bottom:0.45rem;letter-spacing:0.07em;text-transform:uppercase}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:0.75rem 1rem;border:1.5px solid var(--blush-light);border-radius:10px;font-size:0.9rem;font-family:'Poppins',sans-serif;color:var(--text-dark);background:#fff;outline:none;transition:border-color 0.2s}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--strawberry)}
+.form-row textarea{resize:vertical;min-height:110px}
+.form-two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-status{display:none;text-align:center;padding:1.5rem;border-radius:14px;margin-top:1rem;font-family:'Poppins',sans-serif;font-size:0.88rem}
+.form-status.success{background:var(--blush-light);border:1.5px solid var(--blush-mid);color:var(--text-mid)}
+.form-status.success h3{font-family:'Dancing Script',cursive;color:var(--strawberry);font-size:1.5rem;margin-bottom:0.4rem}
+.form-status.error{background:#fff0f0;border:1.5px solid #ffb3b3;color:#c0392b}
+.form-submit{width:100%;background:var(--strawberry);color:#fff;border:none;padding:0.95rem;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Quicksand',sans-serif;transition:all 0.22s;margin-top:0.3rem;letter-spacing:0.05em;box-shadow:0 4px 14px rgba(255,59,92,0.28)}
+.form-submit:hover{background:#e02a4e;transform:translateY(-2px)}
+.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.form-note{text-align:center;font-size:0.78rem;color:var(--text-light);margin-top:0.9rem;line-height:1.7;font-weight:300}
+.form-note a{color:var(--strawberry);text-decoration:none}
+
+/* ── FOOTER ── */
+footer{background:var(--text-dark);color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:0.8rem}
+footer .f-logo{font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--blush-pink);margin-bottom:0.4rem}
+footer .f-tag{font-family:'Dancing Script',cursive;color:var(--blush-mid);font-size:0.95rem;margin-bottom:0.6rem}
+footer a{color:var(--blush-pink);text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     To add a new page: copy a <li> below, change the onclick
+     page name, then add a matching <div class="page"> section.
+     ============================================================ -->
+<nav>
+  <div class="nav-logo-wrap">
+    <div class="nav-logo-main">🍓 Sweets</div>
+    <div class="nav-logo-sub">by Nikeets &nbsp;♥&nbsp; Cookies · Cakes · Ice Cream</div>
+    <div class="nav-logo-tag">made with love, for my nuggets</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active" onclick="showPage('home',this);return false">Home</a></li>
+    <li><a href="#" onclick="showPage('portfolio',this);return false">Portfolio</a></li>
+    <li><a href="#" onclick="showPage('menu',this);return false">Menu</a></li>
+    <li><a href="#" onclick="showPage('order',this);return false">Order</a></li>
+  </ul>
+</nav>
+
+
+<!-- ============================================================
+     PAGE: HOME
+     ============================================================ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO — edit the taglines and button text here -->
+  <div class="hero">
+    <div class="hero-deco a">🍓</div>
+    <div class="hero-deco b">🍓</div>
+    <div class="hero-deco c">✦ ✦</div>
+    <div class="hero-deco d">✦</div>
+    <div class="hero-eyebrow">Handcrafted · Made to Order · Always Fresh</div>
+    <div class="hero-logo">Sweets</div>
+    <div class="hero-byline">by Nikeets</div>
+    <div class="hero-cats"><span>Cookies</span> · <span>Cakes</span> · <span>Ice Cream</span></div>
+    <div class="hero-quote">"Made with love, made to make you smile." ♡</div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="showPage('order',document.querySelectorAll('.nav-links a')[3])">Place an Order</button>
+      <button class="btn-outline" onclick="showPage('menu',document.querySelectorAll('.nav-links a')[2])">See the Menu</button>
+    </div>
+  </div>
+
+  <div class="pattern-div"></div>
+
+  <!-- SLIDESHOW
+       • To change slide captions: edit .s-title and .s-desc text below
+       • To use real photos: paste the URL into the input boxes and click Apply
+       • To make photos permanent: replace the fallback divs with:
+         <img src="YOUR-IMAGE-URL" alt="description"> inside the .slide div -->
+  <div class="slideshow-section">
+    <div class="section-head">
+      <h2>Featured Creations ✨</h2>
+      <p>A taste of what's fresh this season</p>
+    </div>
+    <div class="slideshow-wrap">
+      <div class="slide active" id="slide-0">
+        <div class="slide-fallback slide-bg-1">
+          <div class="s-emoji">🍰</div>
+          <div class="s-title">Strawberry Dream Cake</div>
+          <div class="s-desc">Fresh strawberry layers with whipped cream frosting</div>
+        </div>
+      </div>
+      <div class="slide" id="slide-1">
+        <div class="slide-fallback slide-bg-2">
+          <div class="s-emoji">🍪</div>
+          <div class="s-title">Seasonal Cookie Collections</div>
+          <div class="s-desc">Rotating flavors inspired by the time of year</div>
+        </div>
+      </div>
+      <div class="slide" id="slide-2">
+        <div class="slide-fallback slide-bg-3">
+          <div class="s-emoji">🍦</div>
+          <div class="s-title">Artisan Ice Cream</div>
+          <div class="s-desc">Small-batch seasonal scoops you won't find anywhere else</div>
+        </div>
+      </div>
+      <div class="slide-arrows">
+        <button class="arrow-btn" onclick="changeSlide(-1)">&#8249;</button>
+        <button class="arrow-btn" onclick="changeSlide(1)">&#8250;</button>
+      </div>
+    </div>
+    <div class="slide-dots">
+      <button class="dot active" onclick="goSlide(0)"></button>
+      <button class="dot" onclick="goSlide(1)"></button>
+      <button class="dot" onclick="goSlide(2)"></button>
+    </div>
+    <div class="slide-editor">
+      <h4>🍓 Update Slideshow Photos — paste a direct image URL and click Apply</h4>
+      <div class="url-rows">
+        <div class="url-row"><label>Slide 1</label><input type="text" id="url-0" placeholder="https://i.imgur.com/yourphoto.jpg"><button onclick="applySlideImg(0)">Apply</button></div>
+        <div class="url-row"><label>Slide 2</label><input type="text" id="url-1" placeholder="https://i.imgur.com/yourphoto.jpg"><button onclick="applySlideImg(1)">Apply</button></div>
+        <div class="url-row"><label>Slide 3</label><input type="text" id="url-2" placeholder="https://i.imgur.com/yourphoto.jpg"><button onclick="applySlideImg(2)">Apply</button></div>
+      </div>
+      <p class="editor-note">💡 <strong>How to add your own photos:</strong> Go to <strong>imgur.com</strong> → New Post → upload your photo → right-click the image → "Copy image address" → paste above and click Apply. To make changes permanent, open index.html in a text editor and replace the .slide-fallback div with &lt;img src="YOUR-URL"&gt;.</p>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS — edit text here to update the three brand pillars -->
+  <div class="features-wrap">
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🍓</div>
+        <h3>Seasonal Ingredients</h3>
+        <p>Every recipe is built around what's freshest — flavors always at their peak.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎀</div>
+        <h3>Made to Order</h3>
+        <p>Nothing sits on a shelf. Every treat is baked fresh just for you.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💌</div>
+        <h3>Baked with Heart</h3>
+        <p>Custom flavors, occasions & dietary needs — just ask your nugget baker!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="strawberry-row">🍓 ✦ 🍓 ✦ 🍓</div>
+  <footer>
+    <div class="f-logo">Sweets by Nikeets</div>
+    <div class="f-tag">"Sweet moments made even sweeter." ♡</div>
+    <p><a href="mailto:sweetsbynikeets@gmail.com">sweetsbynikeets@gmail.com</a></p>
+  </footer>
+</div><!-- end page-home -->
+
+
+<!-- ============================================================
+     PAGE: PORTFOLIO
+     To add a permanent photo without using the upload bar,
+     find the JS section labelled "PORTFOLIO DATA" below and
+     add an entry to the relevant array like:
+       { url: "https://i.imgur.com/abc.jpg", cap: "My Cake" }
+     ============================================================ -->
+<div class="page" id="page-portfolio">
+  <div class="port-header">
+    <h2>Our Portfolio 📸</h2>
+    <p>Browse by category — paste an image URL in each section to add your latest creations!</p>
+  </div>
+  <div class="cat-nav">
+    <button class="cat-btn active" onclick="showCat('all',this)">🌸 All Work</button>
+    <button class="cat-btn" onclick="showCat('cakes',this)">🎂 Cakes</button>
+    <button class="cat-btn" onclick="showCat('cookies',this)">🍪 Cookies</button>
+    <button class="cat-btn" onclick="showCat('icecream',this)">🍦 Ice Cream</button>
+  </div>
+
+  <div class="cat-page active" id="cat-all">
+    <div id="all-gallery" class="gallery-grid"></div>
+    <div style="text-align:center;padding:0 0 2rem;color:var(--text-light);font-size:0.82rem;font-weight:300">✦ Select a category above to add photos to that collection ✦</div>
+  </div>
+
+  <div class="cat-page" id="cat-cakes">
+    <div class="cat-page-header"><h3>🎂 Cakes</h3><p>Custom cakes for every celebration</p></div>
+    <div class="upload-bar">
+      <label>Add photo:</label>
+      <input type="text" id="cakes-url" placeholder="Paste image URL...">
+      <input type="text" id="cakes-cap" class="cap-in" placeholder="Caption (optional)">
+      <button onclick="addPhoto('cakes')">+ Add</button>
+    </div>
+    <div id="cakes-gallery" class="gallery-grid"></div>
+  </div>
+
+  <div class="cat-page" id="cat-cookies">
+    <div class="cat-page-header"><h3>🍪 Cookies</h3><p>Decorated, seasonal & gifting sets</p></div>
+    <div class="upload-bar">
+      <label>Add photo:</label>
+      <input type="text" id="cookies-url" placeholder="Paste image URL...">
+      <input type="text" id="cookies-cap" class="cap-in" placeholder="Caption (optional)">
+      <button onclick="addPhoto('cookies')">+ Add</button>
+    </div>
+    <div id="cookies-gallery" class="gallery-grid"></div>
+  </div>
+
+  <div class="cat-page" id="cat-icecream">
+    <div class="cat-page-header"><h3>🍦 Ice Cream</h3><p>Small-batch seasonal scoops & ice cream cakes</p></div>
+    <div class="upload-bar">
+      <label>Add photo:</label>
+      <input type="text" id="icecream-url" placeholder="Paste image URL...">
+      <input type="text" id="icecream-cap" class="cap-in" placeholder="Caption (optional)">
+      <button onclick="addPhoto('icecream')">+ Add</button>
+    </div>
+    <div id="icecream-gallery" class="gallery-grid"></div>
+  </div>
+
+  <footer>
+    <div class="f-logo">Sweets by Nikeets</div>
+    <div class="f-tag">"Sweet moments made even sweeter." ♡</div>
+    <p><a href="mailto:sweetsbynikeets@gmail.com">sweetsbynikeets@gmail.com</a></p>
+  </footer>
+</div><!-- end page-portfolio -->
+
+
+<!-- ============================================================
+     PAGE: MENU
+     To add/edit menu items: find the .menu-item blocks below.
+     Copy any .menu-item block to duplicate it.
+     Add <span class="seasonal-tag">Seasonal</span> inside the
+     h4 to mark something as seasonal.
+     ============================================================ -->
+<div class="page" id="page-menu">
+  <div class="menu-header">
+    <h2>Our Menu 🍓</h2>
+    <p>All items are available upon request — every order is custom. Reach out for a personalized quote!</p>
+  </div>
+  <div class="menu-body">
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🎂 Cakes</div>
+      <div class="menu-div"></div>
+      <div class="menu-items-list">
+        <div class="menu-item">
+          <span class="item-em">🎂</span>
+          <div class="item-info"><h4>Custom Birthday Cake</h4><p>Personalized flavors, fillings & designs for any celebration</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-em">🍓</span>
+          <div class="item-info"><h4>Strawberry Layer Cake <span class="seasonal-tag">Seasonal</span></h4><p>Fresh strawberry compote between soft vanilla layers</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-em">🌸</span>
+          <div class="item-info"><h4>Floral Occasion Cake</h4><p>Elegant buttercream florals for showers & special events</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍪 Cookies</div>
+      <div class="menu-div"></div>
+      <div class="menu-items-list">
+        <div class="menu-item">
+          <span class="item-em">🌸</span>
+          <div class="item-info"><h4>Decorated Sugar Cookies</h4><p>Royal icing designs for any theme or occasion</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-em">🍪</span>
+          <div class="item-info"><h4>Seasonal Cookie Box <span class="seasonal-tag">Seasonal</span></h4><p>Rotating flavors — always a delicious surprise</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-em">🎁</span>
+          <div class="item-info"><h4>Gift Cookie Sets</h4><p>Packaged beautifully — perfect for gifting your nuggets</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cat">
+      <div class="menu-cat-title">🍦 Ice Cream</div>
+      <div class="menu-div"></div>
+      <div class="menu-items-list">
+        <div class="menu-item">
+          <span class="item-em">🍓</span>
+          <div class="item-info"><h4>Strawberry Swirl <span class="seasonal-tag">Seasonal</span></h4><p>Small-batch fresh strawberry ice cream, made to order</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-em">🍦</span>
+          <div class="item-info"><h4>Seasonal Flavor Drops</h4><p>Limited flavors released throughout the year — follow along!</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-em">🍧</span>
+          <div class="item-info"><h4>Custom Ice Cream Cake</h4><p>Ice cream layers with cake, crafted for your event</p></div>
+          <span class="inq-badge">Inquire</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:1.5rem">
+      <button class="btn-primary" onclick="showPage('order',document.querySelectorAll('.nav-links a')[3])">Place an Order →</button>
+    </div>
+  </div>
+  <footer>
+    <div class="f-logo">Sweets by Nikeets</div>
+    <div class="f-tag">"Sweet moments made even sweeter." ♡</div>
+    <p><a href="mailto:sweetsbynikeets@gmail.com">sweetsbynikeets@gmail.com</a></p>
+  </footer>
+</div><!-- end page-menu -->
+
+
+<!-- ============================================================
+     PAGE: ORDER FORM
+     Powered by Formspree (formspree.io).
+     FORMSPREE_ENDPOINT = https://formspree.io/f/mjgzekvz
+     To update: find FORMSPREE_ENDPOINT in the <script> below
+     and replace the URL string.
+     ============================================================ -->
+<div class="page" id="page-order">
+  <div class="order-header">
+    <h2>Place an Order 🎀</h2>
+    <p>Fill out the form and Nikeets will be in touch within 48 hours with your custom quote!</p>
+  </div>
+  <div class="order-body">
+    <div class="form-card">
+      <div class="form-two">
+        <div class="form-row"><label>First Name</label><input type="text" id="f-fname" name="first_name" placeholder="Your first name" required></div>
+        <div class="form-row"><label>Last Name</label><input type="text" id="f-lname" name="last_name" placeholder="Your last name" required></div>
+      </div>
+      <div class="form-row"><label>Email Address</label><input type="email" id="f-email" name="email" placeholder="you@email.com" required></div>
+      <div class="form-row"><label>Phone (optional)</label><input type="tel" id="f-phone" name="phone" placeholder="(555) 000-0000"></div>
+      <div class="form-two">
+        <div class="form-row"><label>Item Type</label>
+          <select id="f-type" name="item_type" required>
+            <option value="">Select a category</option>
+            <option>Cake</option>
+            <option>Cookies</option>
+            <option>Ice Cream</option>
+            <option>Multiple Items</option>
+          </select>
+        </div>
+        <div class="form-row"><label>Occasion</label>
+          <select id="f-occasion" name="occasion">
+            <option value="">Select one</option>
+            <option>Birthday</option>
+            <option>Wedding / Shower</option>
+            <option>Holiday</option>
+            <option>Gift</option>
+            <option>Just Because 🎀</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row"><label>Date Needed</label><input type="date" id="f-date" name="date_needed"></div>
+      <div class="form-row"><label>Order Details</label><textarea id="f-details" name="order_details" placeholder="Describe what you'd love! Flavors, colors, themes, servings, dietary needs, anything special..." required></textarea></div>
+
+      <button class="form-submit" id="submit-btn" onclick="submitOrder(event)">Send My Order Request 🍓</button>
+
+      <p class="form-note">
+        We'll respond within 48 hours at <a href="mailto:sweetsbynikeets@gmail.com">sweetsbynikeets@gmail.com</a><br>
+        Please inquire at least 1–2 weeks before your event!
+      </p>
+
+      <!-- Status messages — shown/hidden by JS -->
+      <div class="form-status success" id="form-success">
+        <h3>Order Received! 🎀</h3>
+        <p>Thank you, nugget! Nikeets will be in touch within 48 hours with your custom quote. Life is short — eat the cake! 🍰</p>
+      </div>
+      <div class="form-status error" id="form-error">
+        ⚠️ Something went wrong sending your order. Please email us directly at <a href="mailto:sweetsbynikeets@gmail.com">sweetsbynikeets@gmail.com</a> and we'll sort it out!
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="f-logo">Sweets by Nikeets</div>
+    <div class="f-tag">"Sweet moments made even sweeter." ♡</div>
+    <p><a href="mailto:sweetsbynikeets@gmail.com">sweetsbynikeets@gmail.com</a></p>
+  </footer>
+</div><!-- end page-order -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     Sections labelled with UPDATE comments are the only ones
+     you'd ever need to change for routine maintenance.
+     ============================================================ -->
+<script>
+
+/* ── PAGE NAVIGATION ── */
+function showPage(id, link) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (link) link.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+/* ── SLIDESHOW ── */
+let cur = 0;
+function goSlide(n) {
+  document.getElementById('slide-' + cur).classList.remove('active');
+  document.querySelectorAll('.dot')[cur].classList.remove('active');
+  cur = n;
+  document.getElementById('slide-' + cur).classList.add('active');
+  document.querySelectorAll('.dot')[cur].classList.add('active');
+}
+function changeSlide(d) { goSlide((cur + d + 3) % 3); }
+setInterval(() => changeSlide(1), 4400);
+
+function applySlideImg(idx) {
+  const url = document.getElementById('url-' + idx).value.trim();
+  if (!url) return;
+  const s = document.getElementById('slide-' + idx);
+  const img = document.createElement('img');
+  img.src = url;
+  img.alt = 'Featured creation ' + (idx + 1);
+  img.style.width = '100%';
+  img.style.height = '100%';
+  img.style.objectFit = 'cover';
+  img.onerror = () => {
+    s.innerHTML = '<div class="slide-fallback slide-bg-' + (idx+1) + '"><div class="s-emoji">🍓</div><div class="s-title">Image not found</div><div class="s-desc">Check the URL and try again</div></div>';
+  };
+  s.innerHTML = '';
+  s.appendChild(img);
+}
+
+/* ── PORTFOLIO DATA ──────────────────────────────────────────
+   UPDATE: To pre-load permanent photos, add entries here:
+   { url: "https://i.imgur.com/yourphoto.jpg", cap: "My Cake" }
+   ────────────────────────────────────────────────────────── */
+const photos = {
+  cakes: [
+    // { url: "https://i.imgur.com/example.jpg", cap: "Birthday Cake" },
+  ],
+  cookies: [
+    // { url: "https://i.imgur.com/example.jpg", cap: "Sugar Cookies" },
+  ],
+  icecream: [
+    // { url: "https://i.imgur.com/example.jpg", cap: "Strawberry Swirl" },
+  ]
+};
+
+function showCat(cat, btn) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cat-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('cat-' + cat).classList.add('active');
+  if (cat === 'all') renderAll();
+}
+
+function addPhoto(cat) {
+  const url = document.getElementById(cat + '-url').value.trim();
+  const cap = document.getElementById(cat + '-cap').value.trim();
+  if (!url) { alert('Please paste an image URL first!'); return; }
+  photos[cat].push({ url, cap });
+  document.getElementById(cat + '-url').value = '';
+  document.getElementById(cat + '-cap').value = '';
+  renderGallery(cat);
+}
+
+function removePhoto(cat, idx) {
+  photos[cat].splice(idx, 1);
+  renderGallery(cat);
+}
+
+function renderGallery(cat) {
+  const grid = document.getElementById(cat + '-gallery');
+  if (!photos[cat].length) {
+    grid.innerHTML = '<div class="empty-state"><div>📸</div><p>No photos yet — paste an image URL above to add your first ' + cat + ' creation!</p></div>';
+    return;
+  }
+  grid.innerHTML = photos[cat].map((p, i) =>
+    '<div class="gallery-item">' +
+      '<img src="' + p.url + '" alt="' + (p.cap || cat) + '" onerror="this.style.display=\'none\'">' +
+      (p.cap ? '<div class="caption">' + p.cap + '</div>' : '') +
+      '<button class="remove-btn" onclick="removePhoto(\'' + cat + '\',' + i + ')">✕</button>' +
+    '</div>'
+  ).join('');
+}
+
+function renderAll() {
+  const grid = document.getElementById('all-gallery');
+  const all = [...photos.cakes, ...photos.cookies, ...photos.icecream];
+  if (!all.length) {
+    grid.innerHTML = '<div class="empty-state"><div>📸</div><p>Add photos in each category tab — they\'ll all appear here!</p></div>';
+    return;
+  }
+  grid.innerHTML = all.map(p =>
+    '<div class="gallery-item">' +
+      '<img src="' + p.url + '" alt="' + (p.cap || 'creation') + '">' +
+      (p.cap ? '<div class="caption">' + p.cap + '</div>' : '') +
+    '</div>'
+  ).join('');
+}
+
+['cakes', 'cookies', 'icecream'].forEach(renderGallery);
+renderAll();
+
+/* ── ORDER FORM — FORMSPREE ──────────────────────────────────
+   FORMSPREE_ENDPOINT: update this URL if you ever change your
+   Formspree form (e.g. create a new one on formspree.io).
+   ────────────────────────────────────────────────────────── */
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjgzekvz';
+
+async function submitOrder(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('submit-btn');
+  const successBox = document.getElementById('form-success');
+  const errorBox = document.getElementById('form-error');
+
+  // Hide previous status messages
+  successBox.style.display = 'none';
+  errorBox.style.display = 'none';
+
+  // Basic validation
+  const required = ['f-fname','f-email','f-type','f-details'];
+  let valid = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.style.borderColor = 'var(--strawberry)'; valid = false; }
+    else el.style.borderColor = 'var(--blush-light)';
+  });
+  if (!valid) { errorBox.textContent = '⚠️ Please fill in all required fields before submitting.'; errorBox.style.display = 'block'; return; }
+
+  // Gather form data
+  const data = {
+    first_name:    document.getElementById('f-fname').value,
+    last_name:     document.getElementById('f-lname').value,
+    email:         document.getElementById('f-email').value,
+    phone:         document.getElementById('f-phone').value,
+    item_type:     document.getElementById('f-type').value,
+    occasion:      document.getElementById('f-occasion').value,
+    date_needed:   document.getElementById('f-date').value,
+    order_details: document.getElementById('f-details').value,
+  };
+
+  // Disable button while sending
+  btn.disabled = true;
+  btn.textContent = 'Sending... 🍓';
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      // Success — show confirmation, clear form
+      successBox.style.display = 'block';
+      ['f-fname','f-lname','f-email','f-phone','f-details'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('f-type').selectedIndex = 0;
+      document.getElementById('f-occasion').selectedIndex = 0;
+      document.getElementById('f-date').value = '';
+      btn.textContent = 'Order Sent! 🎀';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch {
+    errorBox.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send My Order Request 🍓';
+  }
+}
+
+</script>
+</body>
+</html>
